@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-03T01:56:16+05:30</updated><id>http://localhost:4000/</id><title type="html">Huki’s webpage</title><subtitle>Re-Volt, Open Source, Web...
+</subtitle><author><name>Gokul Krishnan</name></author><entry><title type="html">Blogging with Jekyll</title><link href="http://localhost:4000/general/2017/05/01/blogging-with-jekyll.html" rel="alternate" type="text/html" title="Blogging with Jekyll" /><published>2017-05-01T19:57:40+05:30</published><updated>2017-05-01T19:57:40+05:30</updated><id>http://localhost:4000/general/2017/05/01/blogging-with-jekyll</id><content type="html" xml:base="http://localhost:4000/general/2017/05/01/blogging-with-jekyll.html">&lt;p&gt;&lt;em&gt;Welcome to my &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; powered blog.&lt;/em&gt; Jekyll initially came up in an internal discussion with &lt;a href=&quot;http://jigebren.free.fr/&quot;&gt;jigebren&lt;/a&gt; when we considered re-working our Re-Volt &lt;a href=&quot;http://rv12.revoltzone.net/&quot;&gt;project page&lt;/a&gt;. We were looking for a simple and efficient way to manage our content, preferably in a text-based syntax like &lt;code class=&quot;highlighter-rouge&quot;&gt;Markdown&lt;/code&gt;, without having to compromise on our unique layout and design choices. With both of us getting busy with our personal lives, that idea never came to fruition. We were also heavy Windows users with little idea about &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;, so there’s that. Today, with Linux having taken over as my primary system, I decided to go ahead and give this a try.&lt;/p&gt;
+
+&lt;p&gt;Getting a blog up and running with Jekyll took surprisingly little time. Of course, if you’re a Windows user, &lt;em&gt;your mileage may vary&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;gem install jekyll bundler
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;jekyll new &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;-site
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd test&lt;/span&gt;-site
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;That’s it. I can already start saving my blog posts in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder. A newly generated site uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-minima&lt;/code&gt; theme by default. I want my webpage to be &lt;em&gt;responsive&lt;/em&gt;, gracefully reflowing across desktop, tablet and mobile screens. The &lt;code class=&quot;highlighter-rouge&quot;&gt;minima&lt;/code&gt; theme was quite satisfactory in this regard.&lt;/p&gt;
+
+&lt;p&gt;A typical Jekyll website is made up of a &lt;code class=&quot;highlighter-rouge&quot;&gt;YAML&lt;/code&gt; front-matter, &lt;code class=&quot;highlighter-rouge&quot;&gt;Liquid&lt;/code&gt; powered HTML layouts and &lt;code class=&quot;highlighter-rouge&quot;&gt;SCSS&lt;/code&gt; stylesheets. Jekyll churns them together with your content written in &lt;code class=&quot;highlighter-rouge&quot;&gt;Markdown&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Liquid&lt;/code&gt; or even HTML. Functionality is further extended with plugins. With the Minima theme, &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-feed&lt;/code&gt; was enabled by default.&lt;/p&gt;
+
+&lt;p&gt;On the surface, there is some native support for &lt;em&gt;categories&lt;/em&gt; and &lt;em&gt;tags&lt;/em&gt;, but it’s still up to the user to collect together and display posts belonging to each category. This requires two parts: a plugin that generates each category page, and layout files that decide the actual content displayed on those pages.&lt;/p&gt;
+
+&lt;p&gt;The simplest option is to use &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-archives&lt;/code&gt;. In my case, I have it set up to follow the same permalink structure as the posts themselves.&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;jekyll-archives&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;enabled&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;categories&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tags&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;layouts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;category&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tag&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;permalinks&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/tag/:name/'&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/:name/'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;With this, a post belonging to the &lt;code class=&quot;highlighter-rouge&quot;&gt;general&lt;/code&gt; category may be found at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://site/general/2017/05/01/blogging-with-jekyll.html&lt;/code&gt;, and a page displaying all posts belonging to the &lt;code class=&quot;highlighter-rouge&quot;&gt;general&lt;/code&gt; category can be found at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://site/general/&lt;/code&gt;. &lt;em&gt;Note that this only works neatly as long as your posts all have a single category!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The layout files are placed in &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/category.html&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/tag.html&lt;/code&gt;. Jekyll uses these layouts to generate a unique page for each category or tag. It’s actually pretty straightforward.&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;page-heading&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Posts archived in “{{ page.title }}”&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-list&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  {% for post in page.posts %}
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  {% endfor %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The final touch is adding the current post’s tags below the post title. Minima doesn’t display them by default, so I had to override the &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; layout to add the following bit.&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% for tag in page.tags %}
+  {% if tag == page.tags[0] %} • {% endif %}
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;tag&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/tag/{{ tag }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ tag }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+{% endfor %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;My only other modification to the Minima theme is to have the list of posts displayed in &lt;em&gt;two columns&lt;/em&gt; on large screens and switch to a single column layout on palm devices. This was achieved by overriding the default CSS sheet with a custom &lt;code class=&quot;highlighter-rouge&quot;&gt;assets/main.scss&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minima&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/**
+ * Page content
+ */&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.post-list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;flex-flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;media-query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$on-palm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;.post-list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;flex-flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To start writing blog posts, I simply create a new markdown file prefixed with the current date in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder, with the appropriate YAML front-matter. This is easily automated with a shell script that I run from within the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; folder.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&quot;Title: &quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;title
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;2
+&lt;span class=&quot;k&quot;&gt;fi
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;// /-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//[^[&lt;/span&gt;:alnum:]-]/&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +&lt;span class=&quot;s1&quot;&gt;'%Y-%m-%d'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.md&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +&lt;span class=&quot;s2&quot;&gt;&quot;%Y-%m-%d %H:%M:%S %z&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;---&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;layout: post&quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;title: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;date: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;categories: draft&quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tags: &quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;---&quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As I spent several days setting up and tweaking my site, I came across several helpful and excellently designed Jekyll-powered blogs which really help demonstrate the customizing capability of this tool. If you’re looking for a starting point or some inspiration for your Jekyll page, these sites might help you, as they did for me. :)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://charliepark.org/tags-in-jekyll/&quot;&gt;charilepark.org - Tags in Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/&quot;&gt;codinfox.github.io - Using Tags and Categories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/&quot;&gt;perfectlyrandom.org - Adding Disqus to Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://olivermak.es/2016/03/consider-jekyll/&quot;&gt;olivermak.es - Considering Jekyll&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Gokul Krishnan</name></author><category term="announcement" /><category term="jekyll" /><summary type="html">Welcome to my Jekyll powered blog. Jekyll initially came up in an internal discussion with jigebren when we considered re-working our Re-Volt project page. We were looking for a simple and efficient way to manage our content, preferably in a text-based syntax like Markdown, without having to compromise on our unique layout and design choices. With both of us getting busy with our personal lives, that idea never came to fruition. We were also heavy Windows users with little idea about Ruby, so there’s that. Today, with Linux having taken over as my primary system, I decided to go ahead and give this a try.</summary></entry></feed>
