@@ -121,7 +121,7 @@
     <span class="s">category</span><span class="pi">:</span> <span class="s1">'</span><span class="s">/:name/'</span>
 </code></pre>
 </div>
-<p>With this, a post belonging to the <code class="highlighter-rouge">general</code> category may be <code class="highlighter-rouge">http://site/general/2017/05/01/blogging-with-jekyll.html</code>, and a page displaying all posts belonging to the <code class="highlighter-rouge">general</code> category can be found at <code class="highlighter-rouge">http://site/general/</code>. <em>Note that this only works neatly as long as your posts have a single category!</em></p>
+<p>With this, a post belonging to the <code class="highlighter-rouge">general</code> category can be something like <code class="highlighter-rouge">http://site/general/2017/05/01/blogging-with-jekyll.html</code>, and a page displaying all posts belonging to this category is found at <code class="highlighter-rouge">http://site/general/</code>. <em>Note that this only works neatly as long as your posts have a single category!</em></p>
 
 <p>The layout files are placed in <code class="highlighter-rouge">_layouts/category.html</code> and <code class="highlighter-rouge">_layouts/tag.html</code>. Jekyll uses these layouts to generate a unique page for each category or tag. It’s actually pretty straightforward.</p>
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"page-heading"</span><span class="nt">&gt;</span>Posts archived in “{{ page.title }}”<span class="nt">&lt;/h1&gt;</span>
