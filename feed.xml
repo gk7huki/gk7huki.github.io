@@ -1,5 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://gk7huki.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gk7huki.github.io/" rel="alternate" type="text/html" /><updated>2017-05-03T18:35:57+05:30</updated><id>https://gk7huki.github.io/</id><title type="html">Huki’s webpage</title><subtitle>Re-Volt, Open Source, Web...
-</subtitle><author><name>Gokul Krishnan</name></author><entry><title type="html">Blogging with Jekyll</title><link href="https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll.html" rel="alternate" type="text/html" title="Blogging with Jekyll" /><published>2017-05-01T19:57:40+05:30</published><updated>2017-05-01T19:57:40+05:30</updated><id>https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll</id><content type="html" xml:base="https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll.html">&lt;p&gt;&lt;em&gt;Welcome to my &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; powered blog.&lt;/em&gt; Jekyll initially came up in an internal discussion with &lt;a href=&quot;http://jigebren.free.fr/&quot;&gt;jigebren&lt;/a&gt; when we considered re-working our Re-Volt &lt;a href=&quot;http://rv12.revoltzone.net/&quot;&gt;project page&lt;/a&gt;. We were looking for a simple and efficient way to manage our content, preferably in a text-based syntax like &lt;code class=&quot;highlighter-rouge&quot;&gt;Markdown&lt;/code&gt;, without having to compromise on our unique layout and design choices. With both of us getting busy with our personal lives, that idea never came to fruition. We were also heavy Windows users with little idea about &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;, so there’s that. Today, with Linux having taken over as my primary system, I decided to go ahead and give this a try.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://gk7huki.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://gk7huki.github.io/" rel="alternate" type="text/html" /><updated>2017-05-03T20:41:16+05:30</updated><id>https://gk7huki.github.io/</id><title type="html">Huki’s webpage</title><subtitle>Re-Volt, Open Source, Web...
+</subtitle><author><name>Gokul Krishnan</name></author><entry><title type="html">Archives and GitHub Pages</title><link href="https://gk7huki.github.io/general/2017/05/03/archives-and-github-pages.html" rel="alternate" type="text/html" title="Archives and GitHub Pages" /><published>2017-05-03T18:45:44+05:30</published><updated>2017-05-03T18:45:44+05:30</updated><id>https://gk7huki.github.io/general/2017/05/03/archives-and-github-pages</id><content type="html" xml:base="https://gk7huki.github.io/general/2017/05/03/archives-and-github-pages.html">&lt;p&gt;Previously, I posted about adding tags and categories support to your Jekyll site with the help of the &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-archives&lt;/code&gt; plugin. If you’re planning to host your Jekyll site directly from GitHub Pages, there is just one caveat.&lt;/p&gt;
+
+&lt;p&gt;GitHub Pages enables a minimal list of &lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;whitelisted plugins&lt;/a&gt; when building your site with Jekyll. As of writing this post, &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-archives&lt;/code&gt; isn’t one of them. Adding &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-archives&lt;/code&gt; to the whitelist has been a long running request, and if you’re interested, you should follow &lt;a href=&quot;https://github.com/github/pages-gem/pull/106&quot;&gt;Pull Request #106&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you’re like me and you prefer not to have your Jekyll plugin choices restricted, then your best bet is to build the site locally and upload the generated site (i.e., the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; folder) to your GitHub repo. Fortunately, the process can be effortlessly automated… &lt;em&gt;what cannot?&lt;/em&gt; ;)&lt;/p&gt;
+
+&lt;p&gt;Firstly, create a new &lt;code class=&quot;highlighter-rouge&quot;&gt;user.github.io&lt;/code&gt; folder right beside your Jekyll site folder. Initialize an empty git repository inside &lt;code class=&quot;highlighter-rouge&quot;&gt;user.github.io&lt;/code&gt; and have it point to your remote GitHub repository. Back in your Jekyll site folder, you should add a &lt;code class=&quot;highlighter-rouge&quot;&gt;build.sh&lt;/code&gt; script that’s going to automate your build process. You might want to edit &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to exclude this file from the build process.&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Gemfile&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Gemfile.lock&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;build.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;build.sh&lt;/code&gt; script performs several activities:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Build the Jekyll site locally in &lt;code class=&quot;highlighter-rouge&quot;&gt;production&lt;/code&gt; environment.&lt;/li&gt;
+  &lt;li&gt;Clear out existing files from &lt;code class=&quot;highlighter-rouge&quot;&gt;user.github.io&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Copy the freshly generated files from &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Commit and push the changes to your remote repo.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+rm -rf ../gk7huki.github.io/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+cp -r _site/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; ../gk7huki.github.io
+
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../gk7huki.github.io
+git add .
+git commit -am &lt;span class=&quot;s1&quot;&gt;'latest build'&lt;/span&gt;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt; command does not touch hidden folders like &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;, so your repository is safe.&lt;/p&gt;
+
+&lt;p&gt;Now, running &lt;code class=&quot;highlighter-rouge&quot;&gt;./build.sh&lt;/code&gt; on your Jekyll site ensures that your site is generated locally with the latest changes and synced with your remote &lt;code class=&quot;highlighter-rouge&quot;&gt;user.github.io&lt;/code&gt; repo, and the whole process is automated. You should see changes to your site reflected online within seconds of running the build script. :)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The procedure is inspired from &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;charlieparker.org - Jekyll with Plugins&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Gokul Krishnan</name></author><category term="jekyll" /><category term="gh-pages" /><summary type="html">Previously, I posted about adding tags and categories support to your Jekyll site with the help of the jekyll-archives plugin. If you’re planning to host your Jekyll site directly from GitHub Pages, there is just one caveat.</summary></entry><entry><title type="html">Blogging with Jekyll</title><link href="https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll.html" rel="alternate" type="text/html" title="Blogging with Jekyll" /><published>2017-05-01T19:57:40+05:30</published><updated>2017-05-01T19:57:40+05:30</updated><id>https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll</id><content type="html" xml:base="https://gk7huki.github.io/general/2017/05/01/blogging-with-jekyll.html">&lt;p&gt;&lt;em&gt;Welcome to my &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; powered blog.&lt;/em&gt; Jekyll initially came up in an internal discussion with &lt;a href=&quot;http://jigebren.free.fr/&quot;&gt;jigebren&lt;/a&gt; when we considered re-working our Re-Volt &lt;a href=&quot;http://rv12.revoltzone.net/&quot;&gt;project page&lt;/a&gt;. We were looking for a simple and efficient way to manage our content, preferably in a text-based syntax like &lt;code class=&quot;highlighter-rouge&quot;&gt;Markdown&lt;/code&gt;, without having to compromise on our unique layout and design choices. With both of us getting busy with our personal lives, that idea never came to fruition. We were also heavy Windows users with little idea about &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;, so there’s that. Today, with Linux having taken over as my primary system, I decided to go ahead and give this a try.&lt;/p&gt;
 
 &lt;p&gt;Getting a blog up and running with Jekyll took surprisingly little time. Of course, if you’re a Windows user, &lt;em&gt;your mileage may vary&lt;/em&gt;.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;gem install jekyll bundler
@@ -100,7 +140,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;As I spent several days setting up and tweaking my site, I came across several helpful and excellently designed Jekyll-powered blogs which really help demonstrate the customizing capability of this tool. If you’re looking for a starting point or some inspiration for your Jekyll page, these sites might help you, as they did for me. :)&lt;/p&gt;
+&lt;p&gt;As I spent several days setting up and tweaking my site, I came across various helpful and excellently designed Jekyll-powered blogs which really help demonstrate the customizing capability of this tool. If you’re looking for a starting point or some inspiration for your Jekyll page, these sites might help you, as they did for me. :)&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://charliepark.org/tags-in-jekyll/&quot;&gt;charilepark.org - Tags in Jekyll&lt;/a&gt;&lt;/li&gt;
