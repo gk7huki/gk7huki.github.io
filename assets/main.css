@@ -476,8 +476,12 @@ pre {
   display: flex;
   flex-flow: row wrap; }
   .post-list > li {
-    flex: 0 0 50%; }
+    flex: 0 0 45%;
+    margin-right: 5%; }
 
 @media screen and (max-width: 600px) {
   .post-list {
-    flex-flow: column wrap; } }
+    flex-flow: column wrap; }
+    .post-list > li {
+      flex: 0 0 50%;
+      margin-right: 0; } }
